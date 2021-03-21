@@ -9,7 +9,8 @@ from tkinter.font import Font
 import tkinter as tk
 import datetime
 import pytz
-
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 
 
 
@@ -136,16 +137,67 @@ def show_answer():
 
 
 
-Label(tab2, text = "Enter USD:").pack(side=LEFT, padx=5)
-num1 = Entry(tab2)
-num1.pack(side=LEFT, padx=5)
 
-Button(tab2, text='Show', command=show_answer).pack(side=LEFT, padx=5)
 
-Label(tab2, text = "Amount in Yen:").pack(side=LEFT, padx=5)
+Button(tab2, text='Show', command=show_answer).pack(side=BOTTOM, padx=5)
+
+
 blank = Entry(tab2)
-blank.pack(side=LEFT, padx=5)
+blank.pack(side=BOTTOM, padx=5)
 
+Label(tab2, text = "Amount in Yen:").pack(side=BOTTOM, padx=5)
+
+num1 = Entry(tab2)
+num1.pack(side=BOTTOM, padx=5)
+
+Label(tab2, text = "Enter USD:").pack(side=BOTTOM, padx=5)
+
+
+#Pie Chart
+
+Label(tab2, text = "What is your food budget?:").pack(side=TOP, padx=5)
+food_budget = Entry(tab2)
+food_budget.pack(side=TOP, pady=5)
+
+Label(tab2, text = "What is your travel budget?:").pack(side=TOP, padx=5)
+travel_budget = Entry(tab2)
+travel_budget.pack(side=TOP, pady=5)
+
+Label(tab2, text = "What is your entertainment budget?:").pack(side=TOP, padx=5)
+entertainment_budget = Entry(tab2)
+entertainment_budget.pack(side=TOP, pady=5)
+
+Label(tab2, text = "What is your shopping budget?:").pack(side=TOP, padx=5)
+shopping_budget = Entry(tab2)
+shopping_budget.pack(side=TOP, pady=5)
+
+def piechart():
+    global food_budget
+    global travel_budget
+    global entertainment_budget
+    global shopping_budget
+
+    global pie2
+
+    food_budget1=float(food_budget.get())
+    travel_budget1=float(travel_budget.get())
+    entertainment_budget1=float(entertainment_budget.get())
+    shopping_budget1=float(shopping_budget.get())
+
+    figure2 = Figure(figsize=(4,3), dpi=100) 
+    subplot2 = figure2.add_subplot(111) 
+    labels2 = 'Food', 'Travel', 'Entertainment', 'Shopping'
+    pieSizes = [float(food_budget1),float(travel_budget1),float(entertainment_budget1),float(shopping_budget1)]
+    my_colors2 = ['lightblue','lightsteelblue','silver','red']
+    explode2 = (0, 0.1, 0,0)  
+    subplot2.pie(pieSizes, colors=my_colors2, explode=explode2, labels=labels2, autopct='%1.1f%%', shadow=True, startangle=90) 
+    subplot2.axis('equal')  
+    pie2 = FigureCanvasTkAgg(figure2, tab2)
+    pie2.get_tk_widget().pack()
+
+
+
+Button(tab2, text='Calculate', command=piechart).pack(side=TOP, pady=5)
 
 #addressbook
 
