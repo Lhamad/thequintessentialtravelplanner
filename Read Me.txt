@@ -1,0 +1,19 @@
+To run this program the user will need to install:
+
+Pytz (pip install pytz)
+Matplotlib (python -m pip install -u matplotlib)
+
+
+Description of what my project is:  My project is a tkinter based vacation to Japan travel planner.  It is a planner one can use to plan their trip to Japan.  Within the planner the user can do a variety of things such as, countdown the days to their trip, budget out their vacation, create an easy to access address book, and much more.  
+
+Features Used in this Project:
+
+Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program.  This is done with my address book.  The user can add however many places and their corresponding addresses and then call the address of whatever place they are needing.
+
+Create and call at least 3 functions or methods, at least one of which must return a value that is used somewhere else in your code. I have several functions in my code.  Countdown - returns the number of days left until your vacation.  Ok - converts from the users timezone to the Japanese time zone.  Piechart - this takes user input and makes a pie chart based off their budget.  Addressuserinput - this takes a user inputted address and adds it to the address book.  Search_entry - this searched the user's input and returns the correct address for it.  show_answer - this converts from USD to Yen.  
+
+Build a conversion tool that converts user input to another type and displays it.  I did this when I converted the user input from USD to Yen.
+
+Calculate and display data based on an external factor.  This is done with my countdown to the vacation date.
+
+Use pandas, matplotlib, and/or numpy to perform a data analysis project. Ingest 2 or more pieces of data, analyze that data in some manner, and display a new result to a graph, chart, or other display.  This is done with my budget display.  Basically the user is able to visualize how much they are going to spend based off of inputted values.
