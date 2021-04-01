@@ -11,7 +11,7 @@ import datetime
 import pytz
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-
+import json
 
 
 
@@ -204,12 +204,13 @@ Button(tab2, text='Calculate', command=piechart).pack(side=TOP, pady=5)
 #this section allows people to input the address and name of the place and then puts that information into a dictionary
 
 addressbook={}
-
 def addressbookuserinput():
-    addressbook.update({nameofplace.get() : addressofplace.get()})
-    file=open("addressbook.txt","a")
-    file.write(str(addressbook))
-    file.close
+    useradded={str(nameofplace.get()):str(addressofplace.get())}
+    addressbook.update(useradded)
+    with open ('addressbook.json','w') as f:
+        f.write(json.dumps(addressbook))
+   
+    
     
 
 Label(tab3, text = "Enter Name of Place of Interest:").grid(row=0, column=0)
@@ -236,12 +237,13 @@ Label(tab3, text="The address of the requested place is: ").grid(row=2, column=1
 Label(tab3, text="Enter Name of Place you would like an address for: ").grid(row=1, column=0)
 
 def search_entry(): 
-    s=open('addressbook.txt','r').read()
-    if userneededaddress.get() in addressbook:
-        x=addressbook[userneededaddress.get()]
-        addressofuserinput.insert(0, x)
-    else:
-        print("not in book")
+   s=open('addressbook.json','r').read()
+   if userneededaddress.get() in s:
+       y=str(addressbook[userneededaddress.get()])
+       addressofuserinput.insert(0, y)
+       
+   else:
+       addressofuserinput.insert(0, "Not in Book")
     
     
     #this creates a new label to the GUI

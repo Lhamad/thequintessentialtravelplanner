@@ -16,4 +16,6 @@ Build a conversion tool that converts user input to another type and displays it
 
 Calculate and display data based on an external factor.  This is done with my countdown to the vacation date.
 
+Read data from an external file, such as text, JSON, CSV, etc and use that data in your application.  This is done with my address book, the program writes to a json file and then reads the information from the json file back to the user.
+
 Use pandas, matplotlib, and/or numpy to perform a data analysis project. Ingest 2 or more pieces of data, analyze that data in some manner, and display a new result to a graph, chart, or other display.  This is done with my budget display.  Basically the user is able to visualize how much they are going to spend based off of inputted values.
